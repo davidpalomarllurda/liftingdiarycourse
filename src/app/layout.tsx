@@ -34,8 +34,16 @@ export default function RootLayout({
             <span className="text-lg font-semibold">Lifting Diary</span>
             <div className="flex items-center gap-3">
               <Show when="signed-out">
-                <SignInButton />
-                <SignUpButton />
+                <SignInButton mode="modal">
+                  <button className="px-4 py-1.5 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    Sign in
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="px-4 py-1.5 rounded-md bg-blue-600 text-sm font-medium text-white hover:bg-blue-700">
+                    Sign up
+                  </button>
+                </SignUpButton>
               </Show>
               <Show when="signed-in">
                 <UserButton />
