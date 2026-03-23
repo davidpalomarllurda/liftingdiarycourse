@@ -4,6 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 @AGENTS.md
 
+## Docs
+
+Before generating any code, always check the `/docs` directory for a relevant standards document and follow it. The docs directory is the source of truth for coding conventions in this project.
+
+- /docs/ui.md
+
 ## Commands
 
 ```bash
