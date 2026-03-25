@@ -54,3 +54,15 @@ export async function getWorkoutsForDate(
 
   return Array.from(map.values());
 }
+
+export async function createWorkout(
+  userId: string,
+  name: string | null,
+  startedAt: Date
+) {
+  const [workout] = await db
+    .insert(workouts)
+    .values({ userId, name, startedAt })
+    .returning();
+  return workout;
+}

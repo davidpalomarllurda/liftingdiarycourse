@@ -10,6 +10,8 @@ Before generating any code, always check the `/docs` directory for a relevant st
 
 - /docs/ui.md
 - /docs/data-fetching.md
+- /docs/data-mutations.md
+- /docs/auth.md
 
 ## Commands
 
