@@ -12,6 +12,8 @@ Before generating any code, always check the `/docs` directory for a relevant st
 - /docs/data-fetching.md
 - /docs/data-mutations.md
 - /docs/auth.md
+- /docs/routing.md
+- /docs/server-components.md
 
 ## Commands
 
