@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarPicker } from "./_components/calendar-picker";
+import { NewWorkoutLink } from "./_components/new-workout-link";
 import { getWorkoutsForDate } from "@/data/workouts";
 
 export default async function DashboardPage({
@@ -23,38 +24,36 @@ export default async function DashboardPage({
     <main className="mx-auto w-full max-w-4xl px-8 py-10">
       <h1 className="mb-8 text-3xl font-bold">Workout Dashboard</h1>
 
-      <div className="flex flex-col gap-8 md:flex-row md:items-start">
-        <div className="shrink-0">
-          <p className="mb-3 text-lg font-medium">Select Date</p>
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-lg font-medium">
+          Workouts for {format(date, "do MMM yyyy")}
+        </h2>
+        <div className="flex items-center gap-2">
           <CalendarPicker selected={date} />
+          <NewWorkoutLink />
         </div>
+      </div>
 
-        <section className="flex-1">
-          <h2 className="mb-4 text-lg font-medium">
-            Workouts for {format(date, "do MMM yyyy")}
-          </h2>
+      <section>
+        {workouts.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            No workouts logged for this date.
+          </p>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {workouts.map((workout) => {
+              const durationMin =
+                workout.completedAt
+                  ? Math.round(
+                      (workout.completedAt.getTime() -
+                        workout.startedAt.getTime()) /
+                        60_000
+                    )
+                  : null;
 
-          {workouts.length === 0 ? (
-            <p className="text-sm text-muted-foreground">
-              No workouts logged for this date.
-            </p>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {workouts.map((workout) => {
-                const durationMin =
-                  workout.completedAt
-                    ? Math.round(
-                        (workout.completedAt.getTime() -
-                          workout.startedAt.getTime()) /
-                          60_000
-                      )
-                    : null;
-
-                return (
-                  <Link key={workout.id} href={`/dashboard/workout/${workout.id}`}>
-                  <Card
-                    className="cursor-pointer transition-shadow hover:shadow-md"
-                  >
+              return (
+                <Link key={workout.id} href={`/dashboard/workout/${workout.id}`}>
+                  <Card className="cursor-pointer transition-shadow hover:shadow-md">
                     <CardContent className="px-5 py-4">
                       <div className="flex items-start justify-between">
                         <p className="text-base font-semibold">
@@ -80,13 +79,12 @@ export default async function DashboardPage({
                       )}
                     </CardContent>
                   </Card>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </section>
-      </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </main>
   );
 }

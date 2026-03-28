@@ -30,13 +30,6 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');})();`,
-          }}
-        />
-      </head>
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
           <header className="flex items-center justify-between px-6 py-4">
