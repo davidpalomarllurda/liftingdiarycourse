@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { format, parseISO } from "date-fns";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarPicker } from "./_components/calendar-picker";
@@ -50,8 +51,8 @@ export default async function DashboardPage({
                     : null;
 
                 return (
+                  <Link key={workout.id} href={`/dashboard/workout/${workout.id}`}>
                   <Card
-                    key={workout.id}
                     className="cursor-pointer transition-shadow hover:shadow-md"
                   >
                     <CardContent className="px-5 py-4">
@@ -79,6 +80,7 @@ export default async function DashboardPage({
                       )}
                     </CardContent>
                   </Card>
+                  </Link>
                 );
               })}
             </div>
