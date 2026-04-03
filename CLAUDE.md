@@ -35,6 +35,6 @@ No test runner is configured yet.
 
 ## Architecture
 
-The app uses the Next.js App Router. All routes live under `src/app/`. The root layout (`src/app/layout.tsx`) sets up Geist fonts via `next/font/google` and applies base Tailwind classes. Pages are React Server Components by default.
+The app uses the Next.js App Router. All app routes live under `src/app/dashboard/`. The root layout (`src/app/layout.tsx`) sets up Geist fonts via `next/font/google` and applies base Tailwind classes. Pages are React Server Components by default.
 
 Tailwind CSS v4 does not require a config file — utility classes are available globally. Dark mode uses the `dark:` variant with system preference.
